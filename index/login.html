@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      form {
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: 10%;
+        background-color: #ffffff;
+        padding: 80px 75px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input {
+        margin-right: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        text-align: center;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .centered-button {
+        text-align: center;
+      }
+
+      .centered-button input[type="submit"] {
+        margin: 0 auto;
+        display: block;
+      }
+
+      .welcome-page {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .welcome-page h3 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .welcome-page p {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="">
+      <h2>Join me</h2>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      />
+
+      <div class="centered-button">
+        <input type="submit" id="submit-btn" value="Login" disabled />
+      </div>
+      <p style="display: flex; justify-content: center; align-items:center;">Don't have an account yet?  <a href="../php/registration.php" style="text-decoration:none; color:orangered;"> Sign Up</a></p>
+    </form>
+
+    <script>
+      let submit = document.getElementById("submit-btn");
+      submit.addEventListener("click", function () {
+        document.body.innerHTML = `
+        <div class="welcome-page">
+          <h3>Welcome to my Awesome Blog!</h3>
+          <p>Go to <a href="blog.html" style="text-decoration:none; color:orangered;">Blog<a/></p>
+        </div>
+      `;
+      });
+      let usernameInput = document.getElementById("username");
+      let passwordInput = document.getElementById("password");
+      usernameInput.addEventListener("input", checkInputs);
+      passwordInput.addEventListener("input", checkInputs);
+
+      function checkInputs() {
+        if (usernameInput.value !== "" && passwordInput.value !== "") {
+          submit.removeAttribute("disabled");
+        } else {
+          submit.setAttribute("disabled", "disabled");
+        }
+      }
+    </script>
+  </body>
+</html>
